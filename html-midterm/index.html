@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Error-Filled Page</title>
+</head>
+
+<body>
+    <h1>Welcome to My Error-Filled Page</h1>
+    <p> This is a paragraph with mismatched tags and missing closing tags.</p>
+
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+        <li>Item 7</li>
+        <li>Item 8</li>
+        <li>Item 9</li>
+        <li>Item 10</li>
+    </ol>
+
+    <p>This is another paragraph without proper indentation.</p>
+    <img src="image.jpg" alt="programmerStateImage">
+    <a href="https://www.example.com" target="_blank">Click me!</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>25 </td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>30</td>
+        </tr>
+    </table>
+
+    <img src="error.jpeg" alt="Error Image">
+
+    <div style="text-align: center">This is centered text.</div>
+
+    <p style="background-color: lightgray">Text</p>
+
+    <input type="button" value="Click me">
+
+    <!-- This is an unclosed comment -->
+    <a href="#">Link without closing tag</a>
+
+    <p><em>Underlined text</em></p>
+
+    <dl>
+        <dt>Descriptive Item Title</dt>
+        <dd>Descriptive Item Text</dd>
+    </dl>
+
+    <!-- This is an ordered list for the errors -->
+    <ol>
+        <li> DOCTYPE is missing. </li>
+        <li>language attribute in the html should be lang.</li>
+        <li>html shouldn't be inside head tag. So, I placed that before the head tag.</li>
+        <li>head tag doesn't have a closing tag. So, I added one.</li>
+        <br>
+        <li>h1 tag doesn't have a closing tag. So, I added one for it.</li>
+        <li>p tag doesn't have an opening tag. So, I added one for it.</li>
+        <li> ol tag has a closing tag of different type which is ul. So, I changed the closing tag to ol to be the same.
+        </li>
+        <br>
+        <li>The second p tag doesn't have an ending tag. So, I added one. </li>
+        <li>Image 1 is missing alt. So, I added "programmerStateImage" as in the alt attribute.</li>
+        <li>img tag is a void tag, it doesn't need closing tag. But I see closing tag after the anchor tag which is
+            wrong. So, I removed it.</li>
+        <li>The first anchor tag doesn't have a closing tag. So, I added one.</li>
+        <br>
+        <li>table tag doesn't have a closing tag. So, I added one.</li>
+        <li>In the cell with 25, the ending tag is missing /. So, I added it.</li>
+        <br>
+        <li>Error image source should be written as src. So, I change it.</li>
+        <li>center tag is deprecated. So, I changed it to div with text-align: center.</li>
+        <li>To change the background-color of the paragraph. We need to use the style attribute. So, I added somthing
+            like this
+            style="background-color: lightgray</li>
+        <li> The comment is not closed properly. So, I closed it.</li>
+        <li>The second Anchor tag doesn't have a closing tag which was affecting all the text after it. So, I added a
+            closing tag for it.</li>
+        <li>em and p tag are swapped. The nested tag em should close first, and then the outer tag p should close.</li>
+        <br>
+        <li>dl tag should have dt and dd tags inside it not li. So, I added those instead of li</li>
+    </ol>
+</body>
+
+</html>
