@@ -9,13 +9,12 @@ body{
     border-width: 3px;
     border-radius:10px;
     background-color: mediumseagreen;
-
 }
 
 #text1 {
-    left: 150%;
-    top: 250px;
-
+    position: absolute;
+    left: 100%; 
+    top: 0;
 }
 
 #box2{
@@ -25,9 +24,13 @@ body{
     border-radius:3px;
     border-color:purple;
     background-color: mediumvioletred;
+    position: relative;
 }
 
 #text2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 #box3{
