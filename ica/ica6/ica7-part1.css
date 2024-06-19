@@ -12,9 +12,9 @@ body{
 }
 
 #text1 {
-    position: absolute;
-    left: 100%; 
-    top: 0;
+    left: 80%;
+    top: 250px;
+    position: absolute; 
 }
 
 #box2{
@@ -28,18 +28,20 @@ body{
 }
 
 #text2 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
+    top: 80%;
 }
 
 #box3{
-
 border-radius: 10px;
 background-color: orangered;
+height: 1000px;
+
 }
 
 #text3 {
     font-size: 50px;
     border: 5px solid green;
+    position: sticky;
+    top: -1px
 }
