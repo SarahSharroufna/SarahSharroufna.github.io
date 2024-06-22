@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+}
+
+/* Navigation Styles */
+
+nav {
+    background-color: skyblue;
+    color: #fff;
+    padding: 10px;
+    
+}
+
+.flex-parent {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 10px;
+    spacing: space-between;
+}
+
+
+
+/* Grid Styles */
+#grid-parent {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Article Styles */
+article {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+article p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+article ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+article ul li {
+    font-size: 1em;
+    margin-bottom: 5px;
+    style: none;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    #concerts-grid {
+        grid-template-columns: 1fr;
+    }
+}
