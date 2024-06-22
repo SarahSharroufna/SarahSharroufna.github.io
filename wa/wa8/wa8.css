@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: skyblue;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+nav{
+    height: 50vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:20px;
+    background-color: darkblue;
+}
+nav a{
+    width:10vw;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+}
+
+
+img{
+    width:30vw;
+    height: 30vh;
+    transition: width 6s;
+}
+
+img:hover{
+    width:50vw;
+    height: 50vh;
+}
+
+#red-ball{
+    background-color: green;
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    position: absolute;
+    left:5vw;
+    top:0;
+    animation-name: moveBall;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes moveBall{
+    from {
+        margin-left: 5vw;
+
+    }
+    25% {
+        margin-left: 45vw;
+
+    }
+    50% {
+        margin-left: 90vw;
+   
+    }
+    75% {
+        margin-left: 45vw;
+    }
+    to {
+        margin-left: 5vw;
+    }
+}
