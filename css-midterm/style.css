@@ -19,25 +19,28 @@ body {
 header, footer {
     text-align: center;
     margin-top: 80px;
-    margin: 20px;
-    background-color: skyblue;
     padding: 20px;
-
+    background-color: skyblue;
+}
+footer {
+    background-color:  rgba(165, 151, 194, 0.9);
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.5vw;
     margin-bottom: 10px;
 }
 
-header, footer p {
-    font-size: 1.1em;
+header p, footer p {
+    font-size: 1.5vw;
 }
 
 /* Navigation Styles */
 nav {
     display: flex;
-    align-items: center;
+    font-size: 2vwmin;
+    align-items: center; 
+    justify-content: space-between; 
     background-color: rgba(165, 151, 194, 0.9); 
     color: #fff;
     position: fixed; 
@@ -51,6 +54,7 @@ nav {
 .logo {
     width: 150px;
     height: auto;
+   
 }
 
 .flex-parent {
@@ -58,18 +62,21 @@ nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    justify-content: flex-right;
+    justify-content: right;
+    align-items: right;
 }
 
 .flex-parent li {
     margin-left: 20px;
+    cursor: pointer;
 }
-
+/* End of Navigation Styles */
 
 /* Grid Styles */
 #grid-parent {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr; 
+    margin-top: 20px;
     gap: 20px;
 }
 
@@ -79,51 +86,34 @@ article {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-left: 20px;
+    border: 1px solid black;
 }
 
 article img {
-    width: 20%;
+    width: 50%; 
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
-    text-align: wrap;
-    float: left;
 }
 
 .article-main-flex {
-    margin-left: 20px;
-    padding-left: 20px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
-.article-sub-flex {
-    margin-left: 20px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 20px;
-    flex: 1fr 1fr;
-    border: 1px solid black;
-    justify-content: 50%;
-}
+
 h3 {
-    display: block;
+    font-size: 1.5vw;
 }
 
 article h2 {
-    font-size: 1.8em;
+    font-size: 1.8vw;
     margin-bottom: 10px;
-    margin-left: 10px;
 }
 
 article p {
-    font-size: 1.1em;
+    font-size: 1.1vw;
     margin-bottom: 15px;
-    padding-left: 10px;
 }
 
 article ul {
@@ -132,43 +122,60 @@ article ul {
 }
 
 article ul li {
-    font-size: 1em;
+    font-size: 1vw;
     margin-bottom: 5px;
-    style: none;
 }
+/* End of Article Styles */
 
-/* buttons styles */
-.purchase-btn {
+/* Buttons styles */
+.purchase-btn, .go-top-btn {
     display: inline-block;
     padding: 10px 20px;
     background-color: #F3C862;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    border: 1px solid black;
     transition: background-color 0.3s;
     margin-top: 10px;
 }
 
-.purchase-btn:hover {
+.purchase-btn:hover, .go-top-btn:hover {
     background-color: #f5b723;
+    -webkit-transform: translateY(-3px);
+	transform: translateY(-3px);
+    cursor: pointer;
 }
 
-.go-to-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #F3C862;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-
+.go-top-btn {
+    width: 100%;
+    background-color: skyblue;
+    
+  }
+  
+  a {
+    color:blue;
+  }
 
 /* Responsive adjustments */
-@media (max-width: 767px) {
-    #concerts-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 400px) {
+    header, footer {
+        margin-top: 40px;
+    }
+    
+    #grid-parent {
+        grid-template-columns: 1fr; 
+    }
+    
+    .article-main-flex {
+        margin-bottom: 0;
+        flex-direction: column;
+        padding-left: 20px;
+
+    }
+  
+    article img {
+        float: left;
+        width: 20%;
     }
 }
