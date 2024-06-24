@@ -158,7 +158,7 @@ article ul li {
   }
 
 /* Responsive adjustments */
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     header, footer {
         margin-top: 40px;
     }
