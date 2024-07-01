@@ -6,25 +6,22 @@ newQuoteButton.addEventListener('click', getTrivia);
 const answerBtn = document.querySelector('#js-tweet');
 answerBtn.addEventListener('click', displayAnswer);
 
-const answerTxt = document.querySelector('#js-answer-text');
+let answerTxt = document.querySelector('#js-answer-text');
 let answer = '';
 
 async function getTrivia() {
     try {
         const response = await fetch(endpoint);
         if (!response.ok) {
-            if (response.status === 404) {
-                throw new Error('Resource not found');
-            } else {
-                throw new Error('Failed to fetch');
-            }
+            throw new Error(response.statusText);
         }
         const json = await response.json();
-        answer = json.text; 
-        displayTrivia(answer);
+        displayTrivia(json.question);
+        answer = json.answer;
+        answerTxt.textContent = ''; 
     } catch (err) {
         console.error('Error fetching quote:', err);
-        alert('Failed to fetch new quote. Please try again.');
+        alert('Failed to fetch new quote');
     }
 }
 
@@ -36,3 +33,5 @@ function displayTrivia(quote) {
 function displayAnswer() {
     answerTxt.textContent = answer;
 }
+
+getTrivia();
