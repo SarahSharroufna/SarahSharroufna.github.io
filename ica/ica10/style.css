@@ -1,0 +1,19 @@
+body {
+    background-color: pink;
+ 
+}
+
+#color-btn {
+    align-items: center;
+}
+
+#text {
+    background-color: darkorange;
+    color: white;
+    cursor: pointer;
+}
+
+#square {
+    background-color: purple;
+    cursor: pointer;
+}
