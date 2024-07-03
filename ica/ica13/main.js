@@ -52,6 +52,8 @@ class Ball {
         this.x += this.velX;
         this.y += this.velY;
       }
+
+
       collisionDetect() {
         for (const ball of balls) {
           if (this !== ball) {
@@ -60,29 +62,10 @@ class Ball {
             const distance = Math.sqrt(dx * dx + dy * dy);
     
             if (distance < this.size + ball.size) {
-              //ball.color = this.color = randomRGB();
-               // Collision detected, adjust velocities for bouncing off
-          const angle = Math.atan2(dy, dx);
-          const overlap = this.size + ball.size - distance;
-
-          // Move balls apart to avoid sticking
-          const moveX = overlap * Math.cos(angle);
-          const moveY = overlap * Math.sin(angle);
-          this.x -= moveX / 2;
-          this.y -= moveY / 2;
-          ball.x += moveX / 2;
-          ball.y += moveY / 2;
-
-          // Calculate new velocities for bouncing off
-          const thisVelX = this.velX;
-          const thisVelY = this.velY;
-          const ballVelX = ball.velX;
-          const ballVelY = ball.velY;
-
-          this.velX = ballVelX * Math.cos(angle) + ballVelY * Math.sin(angle);
-          this.velY = ballVelY * Math.cos(angle) - ballVelX * Math.sin(angle);
-          ball.velX = thisVelX * Math.cos(angle) + thisVelY * Math.sin(angle);
-          ball.velY = thisVelY * Math.cos(angle) - thisVelX * Math.sin(angle);
+              ball.color = this.color = randomRGB();
+            
+              this.velY = -(this.velY);
+              this.velX = -(this.velX);
             }
           }
         }
