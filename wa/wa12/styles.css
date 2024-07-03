@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+#quote-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#quote-container img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+#quote-text {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+#quote-character {
+  font-style: italic;
+}
+#js-new-quote {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+#js-new-quote:hover {
+  background-color: #0056b3;
+}
