@@ -23,7 +23,7 @@ async function getQuote() {
     } catch (error) {
         console.error('Error fetching quote:', error);
         alert('Failed to fetch new quote');
-    }
+    } 
 }
 
 function displayQuote(quote, character, imageUrl) {
