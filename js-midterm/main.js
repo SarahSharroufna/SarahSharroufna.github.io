@@ -1,139 +1,118 @@
-// setup canvas
+// Setup canvas
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-const width = (canvas.width = window.innerWidth);
-const height = (canvas.height = window.innerHeight);
+const width = canvas.width = window.innerWidth;
+const height = canvas.height = window.innerHeight;
 
-// function to generate random number
+// Function to generate random number
 function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  let num = 0;
+  while (num === 0) {
+    num = Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  return num;
 }
 
-// function to generate random color
+// Function to generate random color
 function randomRGB() {
-  return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+  return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`;
 }
 
-class Ball {
-    constructor(x, y, velX, velY, color, size) {
-      this.x = x;
-      this.y = y;
-      this.velX = 0.25;
-      this.velY = 0.25;
-      this.color = color;
-      this.size = size;
+// Define Circle class
+class Circle {
+  constructor(x, y, velX, color, number) {
+    this.x = x;
+    this.y = y;
+    this.velX = velX;
+    this.color = color;
+    this.number = number; 
+    this.radius = 30; 
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = 'white';
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(this.number.toString(), this.x, this.y);
+  }
+
+  update() {
+    this.x += this.velX;
+    if (this.x + this.radius < 0) {
+      this.x = width + this.radius;
+    } else if (this.x - this.radius > width) {
+      this.x = -this.radius;
     }
-
-    draw() {
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-        ctx.fill();
-      }
-
-      update() {
-       
-
-        if ((this.x + this.size) >= width) {
-          this.velX = -(this.velX);
-        }
-      
-        if ((this.x - this.size) <= 0) {
-          this.velX = -(this.velX);
-        }
-      
-        if ((this.y + this.size) >= height) {
-          this.velY = -(this.velY);
-        }
-      
-        if ((this.y - this.size) <= 0) {
-          this.velY = -(this.velY);
-        }
-      
-        this.x += this.velX;
-        this.y += this.velY;
-      }
-
-
-      collisionDetect() {
-        for (const ball of balls) {
-          if (this !== ball) {
-            const dx = this.x - ball.x;
-            const dy = this.y - ball.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-    
-            if (distance < this.size + ball.size) {
-              ball.color = this.color = randomRGB();
-            
-              this.velY = -(this.velY);
-              this.velX = -(this.velX);
-            }
-          }
-        }
-      }
-    
-  isClicked(mouseX, mouseY) {
+  }
+   // Check if the circle is clicked
+   isClicked(mouseX, mouseY) {
     const dx = mouseX - this.x;
     const dy = mouseY - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
-    return distance < this.size;
+    
+    // Check if the distance is within the circle's radius
+    return distance <= this.radius;
   }
-  }
-  
-
-  const balls = [];
-
-while (balls.length < 25) {
-  const size = random(10, 20);
-  const ball = new Ball(
-    // ball position always drawn at least one ball width
-    // away from the edge of the canvas, to avoid drawing errors
-    random(0 + size, width - size),
-    random(0 + size, height - size),
-    random(-7, 7),
-    random(-7, 7),
-    randomRGB(),
-    size,
-  );
-
-  balls.push(ball);
 }
 
-function loop() {
-    ctx.fillStyle = "rgb(0 0 0 / 25%)";
-    ctx.fillRect(0, 0, width, height);
-  
-    for (const ball of balls) {
-      ball.draw();
-      ball.update();
-      ball.collisionDetect()
-    }
-  
-    requestAnimationFrame(loop);
-  }
+//Array of circles
+const circles = [];
+const numCircles = 10;
 
-  loop();
+// Initialize circles with numbers and random properties
+for (let i = 0; i < numCircles; i++) {
+  const x = random(0 + 30, width - 30);
+  const y = random(0 + 30, height - 30);
+  const velX = random(-3, 3); 
+  const color = randomRGB();
+  const number = i; 
 
-  // Initialize a counter variable
-let clickCount = 0;
+  circles.push(new Circle(x, y, velX, color, number));
+}
 
-// Add event listener to track mouse clicks
+let numberOfCirclesClicked = 0;
+
+// Track mouse click event
 canvas.addEventListener('mousedown', function(event) {
-  const mouseX = event.clientX;
-  const mouseY = event.clientY;
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
 
-  // Loop through each ball and check if it was clicked
-  for (const ball of balls) {
-    const dx = mouseX - ball.x;
-    const dy = mouseY - ball.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < ball.size) {
-      clickCount++;
-      console.log('Click count:', clickCount);
-      break; 
+  circles.forEach(circle => {
+    if (circle.isClicked(mouseX, mouseY))
+    {
+      console.log("circle clicked: ", circle.number);
+      document.getElementById(numberOfCirclesClicked).textContent = circle.number;
+      if (numberOfCirclesClicked == 9) {
+        numberOfCirclesClicked = 0;
+      } else {
+        numberOfCirclesClicked ++;
+      }
+      console.log("numberOfCirclesClicked: ", numberOfCirclesClicked);
+      return;
     }
-  }
+  });
 });
+
+// Animation loop
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+
+  circles.forEach(circle => {
+    circle.draw();
+    circle.update();
+  });
+
+  requestAnimationFrame(animate);
+}
+// Start the loop
+animate();
+
 
