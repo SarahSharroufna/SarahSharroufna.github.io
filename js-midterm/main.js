@@ -5,6 +5,18 @@ const ctx = canvas.getContext("2d");
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
+// Get the submit button
+const submitBtn = document.getElementById('submit-btn');
+
+submitBtn.addEventListener('click', function() {
+
+  if (document.getElementById('9').textContent === '') {
+    window.alert('Please fill in all the digits!');
+  } else {
+    window.alert('Phone number submitted successfully!');
+  }
+});
+
 // Function to generate random number
 function random(min, max) {
   let num = 0;
