@@ -21,13 +21,14 @@ function randomRGB() {
 
 // Define Circle class
 class Circle {
-  constructor(x, y, velX, color, number) {
+  constructor(x, y, velX, color, number,result) {
     this.x = x;
     this.y = y;
     this.velX = velX;
     this.color = color;
     this.number = number; 
-    this.radius = 30; 
+    this.result = result;
+    this.radius = 50; 
   }
 
   draw() {
@@ -63,6 +64,7 @@ class Circle {
 
 //Array of circles
 const circles = [];
+const values = ["8-8", "76^0", "\u221A4", "10 % 7","5+5-6", "4+145^0","42/7","\u221A25+2","2^3","4*2+1"];
 const numCircles = 10;
 
 // Initialize circles with numbers and random properties
@@ -71,9 +73,10 @@ for (let i = 0; i < numCircles; i++) {
   const y = random(0 + 30, height - 30);
   const velX = random(-3, 3); 
   const color = randomRGB();
-  const number = i; 
+  const number = `${values[i]}`; 
+  const result = i;
 
-  circles.push(new Circle(x, y, velX, color, number));
+  circles.push(new Circle(x, y, velX, color, number, result));
 }
 
 let numberOfCirclesClicked = 0;
@@ -89,7 +92,7 @@ canvas.addEventListener('mousedown', function(event) {
     if (circle.isClicked(mouseX, mouseY))
     {
       console.log("circle clicked: ", circle.number);
-      document.getElementById(numberOfCirclesClicked).textContent = circle.number;
+      document.getElementById(numberOfCirclesClicked).textContent = circle.result;
       if (numberOfCirclesClicked == 9) {
         numberOfCirclesClicked = 0;
       } else {
